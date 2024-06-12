@@ -1,0 +1,15 @@
+{% extends 'store/base.html'%}
+{%load static%}
+
+{%block content%}
+<h2>&#9812; Региструјте се</h2>
+<form method="post">
+{%csrf_token%}
+{{form}}
+<button type="submit">Потврди</button>
+</form>
+<center>
+<p>Уколико сте регистровани, <a href="{%url 'login'%}">пријавите се</a></p>
+</center>
+
+{%endblock content%}

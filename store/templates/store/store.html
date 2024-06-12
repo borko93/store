@@ -1,0 +1,29 @@
+{%extends 'store/base.html'%}
+{%load static%}
+
+
+
+{%block content%}
+
+<div class="row">
+    {%for product in products%}
+    <div class="col-lg-2" style="padding-left: 15px; padding-right: 15px;">
+        <br>
+        {%if product.image%}
+        <img class="thumbnail" src="{{product.image.url}}">
+        {%else%}
+        <img class="thumbnail" src="{%static 'images/no_image.png'%}">
+        {%endif%}
+        <div class="box-element product">
+            <h6><strong>{{product.name}}</strong></h6>
+            <hr>
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-primary add-btn update-cart">Додај у корпу</button>
+            <a class="btn btn-outline-success" href="#">Детаљније</a>
+            <h4 style="float: right; font-size: medium;"><strong>{{product.price|floatformat:2}} KM</strong></h4>
+        </div>
+
+    </div>
+    {%endfor%}
+</div>
+
+{%endblock content%}

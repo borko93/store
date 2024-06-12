@@ -1,0 +1,19 @@
+{%extends 'store/base.html'%}
+{%load static%}
+
+{%block content%}
+
+<center>
+    <h3><strong>Да ли сте сигурно да желите да се одјавите?</strong></h3><br><br>
+    <form action="{%url 'logout'%}" method="post">
+        {%csrf_token%}
+        <button type="submit" class="btn btn-outline-success">Да, желим да се излогујем</button>
+    </form>
+    <br><br><br>
+    <form action="{%url 'store'%}" method="post">
+        {%csrf_token%}
+        <button type="submit" class="btn btn-outline-danger">Не, не желим да се излогујем</button>
+    </form>
+</center>
+
+{%endblock content%}

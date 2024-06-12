@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Prodavnica</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{%static 'css/main.css'%}">
+        <link rel="stylesheet" type="text/css" href="{%static 'css/footer.css'%}">
+        <link rel="stylesheet" type="text/css" href="{%static 'css/cart.css'%}">
+        <link rel="stylesheet" type="text/css" href="{%static 'css/checkout.css'%}">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    </head>
+    <body>
+        <!--Podešavanja navbar-a-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark";">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{%url 'home'%}">Почетна</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{%url 'store'%}">Куповина</a>
+                        </li>
+
+                      <li class="nav-item">
+                        {%if user.is_authenticated%}
+                        <a class="nav-link active" aria-current="page" href="{%url 'cart'%}">Корпа</a>
+                        {%else%}
+                        <a class="nav-link disabled" aria-current="page" href="{%url 'cart'%}">Корпа</a>
+                        {%endif%}
+                      </li>
+
+                      <li class="nav-item">
+                        {%if user.is_authenticated%}
+                        <a class="nav-link active" aria-current="page" href="{%url 'checkout'%}">Плаћање</a>
+                        {%else%}
+                        <a class="nav-link disabled" aria-current="page" href="{%url 'checkout'%}">Плаћање</a>
+                        {%endif%}
+                      </li>
+
+                      {%if user.is_authenticated%}
+                        <a class="btn btn-outline-success disabled" href="{%url 'login'%}" >Пријава</a></p>
+                        {%else%}
+                        <a class="btn btn-outline-success active" href="{%url 'login'%}" >Пријава</a></p>
+
+                        {%endif%}
+                   
+                      
+            </div>
+            
+            {%if user.is_authenticated%}
+            <a href="{%url 'cart'%}">
+                <img id="cart-icon" src="{%static 'images/cart.jpg'%}" height="40" width="40" style="margin-right: 10px;">
+                </a>
+                <p style="color: red;margin-right:5px;padding: 5px; border-style:solid; border-color: aliceblue;" id="cart-total">0</p>
+            {%endif%}
+            <!--Postavljanje dobrodošlice u navbar sa placeholderom korisničkog imena-->
+            {%if user.is_authenticated%}
+            <p style="color: white;">Добродошли, {{user.username }} </p>
+            {%endif%}
+            
+            <!--Podešavanje dugmeta za logout-->
+            {%if user.is_authenticated%}
+            <a href="{%url 'odjava'%}" class="btn btn-outline-danger" style="margin-left: 10px;">Одјава</a></p >
+            {%endif%}
+              
+            
+
+            </div>
+                </div>
+
+        </nav>
+
+
+
+        {%block content%}
+    
+        {%endblock content%}
+
+
+
+        <footer class="footer";">
+            <div class="container">
+                <div class="row">
+
+                    <div class="footer-col">
+                        <h4>Митра д.о.о</h4>
+                        <ul>
+                            <li><a href="#">О нама</a></li>
+                            <li><a href="#">Наше услуге</a></li>
+                            <li><a href="#">Политика приватности</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Помоћ</h4>
+                        <ul>
+                            <li><a href="#">Често постављанa питања</a></li>
+                            <li><a href="#">Достава</a></li>
+                            <li><a href="#">Поврат робе</a></li>
+                            <li><a href="#">Статус наруџбе</a></li>
+                            <li><a href="#">Начин плаћања</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Продавница</h4>
+                        <ul>
+                            <li><a href="#">Восак</a></li>
+                            <li><a href="#">Одежде</a></li>
+                            <li><a href="#">Тамјан</a></li>
+                            <li><a href="#">Остало</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Пратите нас</h4>
+                        <div class="social-links">
+                            <a href="http://facebook.com/crkva.reljevo"><i class="fab fa-facebook-f"></i></a>
+                            <a href="http://instagram.com"><i class="fab fa-instagram"></i></a>
+                            <a href="http://twitter.com"><i class="fab fa-twitter"></i></a>
+                            <a href="http://linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+    </body>
+</html>

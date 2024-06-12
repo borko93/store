@@ -1,0 +1,23 @@
+{%extends 'store/base.html'%}
+{%load static%}
+
+{%block content%}
+<br>
+<center>
+<p><strong>Унесите корисничко име и лозинку</strong></p>
+<br>
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            {%csrf_token%}
+            {{form}}
+            <button type="submit">Пријави се</button>
+        </form>
+        <br>
+        <p>Уколико немате налог, <a href="{%url 'signup'%}">региструјте се</a></p>
+        </center>
+    </div>
+</div>
+
+
+{%endblock content%}

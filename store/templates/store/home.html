@@ -1,0 +1,36 @@
+{%extends 'store/base.html'%}
+{%load static%}
+
+{%block content%}
+{%if user.is_authenticated%}
+<center>
+<h3><strong>Добродошли на платфморму за купопродају црквених предмета!</strong></h3>
+<hr>
+</center>
+{%else%}
+<center>
+<h3><strong>Добродошли на платфморму за купопродају црквених предмета!</strong></h3>
+<hr>
+<div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Немате налог?</h5>
+          <p class="card-text">Региструјте се!</p>
+          <a href="{%url 'signup'%}" class="btn btn-primary">&#8594; Регистрација</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Већ сте регистровани?</h5>
+          <p class="card-text">Пријавите се</p>
+          <a href="{%url 'login'%}" class="btn btn-primary">&#8594; Пријава</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</center>
+{%endif%}
+{%endblock content%}
